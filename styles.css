@@ -1,0 +1,59 @@
+body {
+  background: #FBFBFB;
+}
+
+.navbar-brand {
+	padding: 0 15px 0 0;
+}
+
+label {
+  color: #00508C;
+  font-size: 14px;
+}
+
+h1 {
+  font-family:'Georgia',serif;
+  margin-bottom:20px;
+  color: #00508C;
+}
+
+.well {
+  background-color: #F3F0F0;
+  border-radius: 0;
+  padding-bottom: 0;
+}
+
+.shiny-input-container {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+p {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+  margin: 0 0 15px;
+}
+
+.table-bordered {
+  border: 1px solid #F3F0F0;
+}
+
+table * {
+  font-family: sans-serif !important;
+  font-size: 12px;
+}
+
+table th {
+  font-size: 13px;
+  color: #00508C;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background: #F3F0F0;
+}
+
+table tr:nth-child(odd) {
+  background: #FFF;
+}

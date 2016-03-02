@@ -4,7 +4,7 @@ library(shiny)
 
 options(stringsAsFactors = F)
 
-setwd('C:/Users/B1GRU/Documents/Booz/Bahlmer/Flash Drive/Flash Drive/Data')
+# setwd('C:/Users/B1GRU/Documents/Booz/Bahlmer/Flash Drive/Flash Drive/Data')
 
 myplclust <- function(hclust, lab = hclust$labels, lab.col = rep(1, length(hclust$labels)), 
                       hang = 0.1, ...) {
@@ -19,22 +19,25 @@ myplclust <- function(hclust, lab = hclust$labels, lab.col = rep(1, length(hclus
     plot(hclust, labels = FALSE, hang = hang, ...)
     text(x = x, y = y[hclust$order] - (max(hclust$height) * hang), labels = lab[hclust$order], 
          col = lab.col[hclust$order], srt = 90, adj = c(1, 0.5), xpd = NA, ...)
-    
 }
 
-pitch <- read.csv('Pitchfx.csv')
+# pitch <- read.csv('Pitchfx.csv')
+pitchType <- read.csv('sampleData.csv')
 pitch_splits <- read.csv('Pitching_Splits.csv')
 pitcher_id_name <- pitch_splits %>% 
-    select(pitcher_id, Name) %>% #, org) %>% 
+    select(pitcher_id, Name) %>%
     unique
+fav_pitches <- read.csv('fav_pitches.csv')
 
-fav_pitches <- pitch %>% 
-    mutate(pitch_type = ifelse(pitch_type == '', 'blank', pitch_type)) %>% 
-    group_by(pitcher_id, pitch_type) %>%
-    summarise(count = n()) %>% 
-    group_by(pitcher_id) %>% 
-    mutate(Total = sum(count)) %>% 
-    spread(pitch_type, count, fill = 0) %>% 
-    mutate_each(funs(. / Total), -c(pitcher_id, Total)) %>% 
-    left_join(pitcher_id_name, by = 'pitcher_id') %>% 
-    select(Name, everything())
+# fav_pitches <- pitch %>% 
+#     mutate(pitch_type = ifelse(pitch_type == '', 'blank', pitch_type)) %>% 
+#     group_by(pitcher_id, pitch_type) %>%
+#     summarise(count = n()) %>% 
+#     group_by(pitcher_id) %>% 
+#     mutate(Total = sum(count)) %>% 
+#     spread(pitch_type, count, fill = 0) %>% 
+#     mutate_each(funs(. / Total), -c(pitcher_id, Total)) %>% 
+#     left_join(pitcher_id_name, by = 'pitcher_id') %>% 
+#     select(Name, everything())
+# 
+# write.csv(fav_pitches, 'fav_pitches.csv', row.names = F)
